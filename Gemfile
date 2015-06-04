@@ -15,6 +15,10 @@ gem 'rails-lineman'
 gem "seed-fu", "~> 2.3"
 gem "haml-rails"
 
+group :production do
+  gem 'rails_12factor'
+end
+
 group :development do
   gem "better_errors"
   gem "spring"
