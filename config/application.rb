@@ -17,6 +17,7 @@ Dotenv.load(File.expand_path "../../#{ ENV['RAILS_ENV'] || :development }", __FI
 
 module Thenightshift
   class Application < Rails::Application
+    config.rails_lineman.skip_build = true
     config.rails_lineman.lineman_project_location = "my/app"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
