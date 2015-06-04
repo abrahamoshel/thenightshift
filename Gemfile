@@ -14,6 +14,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'rails-lineman'
 gem "seed-fu", "~> 2.3"
 gem "haml-rails"
+gem 'foreigner'
 
 group :production do
   gem 'rails_12factor'

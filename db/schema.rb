@@ -17,11 +17,11 @@ ActiveRecord::Schema.define(version: 20141231040929) do
   enable_extension "plpgsql"
 
   create_table "items", force: true do |t|
-    t.string   "name",       limit: nil
+    t.string   "name"
     t.float    "cost"
-    t.string   "category",   limit: nil
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "menu_items", force: true do |t|
@@ -35,30 +35,28 @@ ActiveRecord::Schema.define(version: 20141231040929) do
   add_index "menu_items", ["menu_id"], name: "index_menu_items_on_menu_id", using: :btree
 
   create_table "menus", force: true do |t|
-    t.string   "name",       limit: nil
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "profiles", force: true do |t|
-    t.string   "f_name",     limit: nil
-    t.string   "l_name",     limit: nil
-    t.string   "image",      limit: nil
+    t.string   "f_name"
+    t.string   "l_name"
+    t.string   "image"
     t.integer  "user_id"
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "email",        limit: nil
+    t.string   "email"
     t.integer  "latest_venue"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
-
-  add_index "users", ["latest_venue"], name: "index_users_on_latest_venue", using: :btree
 
   create_table "venue_menus", force: true do |t|
     t.integer  "venue_id"
@@ -71,8 +69,8 @@ ActiveRecord::Schema.define(version: 20141231040929) do
   add_index "venue_menus", ["venue_id"], name: "index_venue_menus_on_venue_id", using: :btree
 
   create_table "venues", force: true do |t|
-    t.string   "name",       limit: nil
-    t.string   "slogan",     limit: nil
+    t.string   "name"
+    t.string   "slogan"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -88,5 +86,16 @@ ActiveRecord::Schema.define(version: 20141231040929) do
 
   add_index "visits", ["user_id"], name: "index_visits_on_user_id", using: :btree
   add_index "visits", ["venue_id"], name: "index_visits_on_venue_id", using: :btree
+
+  add_foreign_key "menu_items", "items", name: "menu_items_item_id_fk"
+  add_foreign_key "menu_items", "menus", name: "menu_items_menu_id_fk"
+
+  add_foreign_key "profiles", "users", name: "profiles_user_id_fk"
+
+  add_foreign_key "venue_menus", "menus", name: "venue_menus_menu_id_fk"
+  add_foreign_key "venue_menus", "venues", name: "venue_menus_venue_id_fk"
+
+  add_foreign_key "visits", "users", name: "visits_user_id_fk"
+  add_foreign_key "visits", "venues", name: "visits_venue_id_fk"
 
 end
