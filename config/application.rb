@@ -17,7 +17,7 @@ Dotenv.load(File.expand_path "../../#{ ENV['RAILS_ENV'] || :development }", __FI
 
 module Thenightshift
   class Application < Rails::Application
-    # config.rails_lineman.skip_build = true
+    config.rails_lineman.skip_build = true
     config.rails_lineman.lineman_project_location = "my/app"
     config.serve_static_files = true
     config.time_zone = 'Central Time (US & Canada)'
