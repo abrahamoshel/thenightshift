@@ -1,0 +1,16 @@
+defaults: &defaults
+  adapter: postgresql
+  database: night_shift_<%= Rails.env %>
+  userame: abrahamoshel
+  password:
+
+test:
+  <<: *defaults
+
+development:
+  <<: *defaults
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
